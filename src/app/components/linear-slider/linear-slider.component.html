@@ -1,0 +1,13 @@
+<form class="container" (submit)="submit()">
+  <span class="tag">Max</span>
+  <input type="number" name="current"
+    class="current" placeholder="1"
+    [(ngModel)]="value">
+
+  <div [id]="id" #sliderContainer class="linear-slider"></div>
+
+  <input type="number" name="maximum"
+    class="maximum" placeholder="2"
+    [(ngModel)]="maxValue">
+  <input type="submit" value="" style="display: none;">
+</form>

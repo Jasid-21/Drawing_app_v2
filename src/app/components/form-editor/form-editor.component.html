@@ -1,0 +1,32 @@
+<div class="form-editor">
+  <h4 class="title">Transformations.</h4>
+  <div class="scale-container feature-container">
+    <span class="feature-title">
+      Scale X
+    </span><br>
+    <app-linear-slider [id]="'scaleXSlider'" #scaleXSlider
+      (export-values)="handleScaleX($event)">
+    </app-linear-slider>
+  </div>
+
+  <div class="scale-container feature-container">
+    <span class="feature-title">
+      Scale Y
+    </span><br>
+    <app-linear-slider [id]="'scaleYSlider'" #scaleYSlider
+      (export-values)="handleScaleY($event)">
+    </app-linear-slider>
+  </div>
+
+  <div class="translation-container feature-container">
+    <span class="feature-title">
+      Translate
+    </span><br>
+
+  </div>
+  <div class="rotation-container feature-container">
+    <span class="feature-title">
+      Rotation
+    </span><br>
+  </div>
+</div>

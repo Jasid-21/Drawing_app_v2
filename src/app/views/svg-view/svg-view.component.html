@@ -1,0 +1,21 @@
+<div class="svg-workspace">
+  <nav class="svg-workspace-navbar">
+    <div class="mousemodes-container">
+      <button (click)="setMouseMode('rect')">Rect</button>
+      <button (click)="setMouseMode('circle')">Circle</button>
+      <button (click)="setMouseMode('path')">Path</button>
+      <button (click)="setMouseMode('default')">Default</button>
+    </div>
+  </nav>
+  <div class="workspace-container">
+    <div class="layers-container"></div>
+    <div class="drawing-container">
+      <app-drawing-space></app-drawing-space>
+    </div>
+    <div class="edition-tools-container">
+      <app-form-editor></app-form-editor>
+      <br>
+      <app-styles-editor></app-styles-editor>
+    </div>
+  </div>
+</div>
