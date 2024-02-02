@@ -83,10 +83,9 @@ function MouseDownHandler(this: DrawingSpaceComponent, ev: MouseEvent) {
       ev.preventDefault();
       return;
     }
-    console.log(ev.detail.box.x, ' ', ev.detail.box.x2);
     shape?.remember(constants.DRAGGING, true);
 
-    const g: G = shape?.remember('control-group');
+    const g: G = shape?.remember(constants.CONTROL_G);
     const p: Duple<number> = shape?.remember(constants.MD_POINT);
     if (!g || !p) return;
 
@@ -102,14 +101,14 @@ function MouseDownHandler(this: DrawingSpaceComponent, ev: MouseEvent) {
   }.bind(this));
 
   shape.click(function(this: any, ev: MouseEvent) {
-    const d = shape?.remember(constants.DRAGGING);
+    if (!shape) return;
+
+    const d = shape.remember(constants.DRAGGING);
     if (d) {
-      shape?.forget(constants.DRAGGING);
+      shape.forget(constants.DRAGGING);
       return;
     }
 
-    if (!shape) return;
-    this.animationManager.removeControlShape(shape);
     this.animationManager.drawControlShape(shape.id());
   }.bind(this));
 

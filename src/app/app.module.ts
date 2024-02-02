@@ -10,6 +10,7 @@ import { StylesEditorComponent } from './components/styles-editor/styles-editor.
 import { FormsModule } from '@angular/forms';
 import { DrawingSpaceComponent } from './components/drawing-space/drawing-space.component';
 import { LinearSliderComponent } from './components/linear-slider/linear-slider.component';
+import { CircularSliderComponent } from './components/circular-slider/circular-slider.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LinearSliderComponent } from './components/linear-slider/linear-slider.
     FormEditorComponent,
     StylesEditorComponent,
     DrawingSpaceComponent,
-    LinearSliderComponent
+    LinearSliderComponent,
+    CircularSliderComponent
   ],
   imports: [
     BrowserModule,

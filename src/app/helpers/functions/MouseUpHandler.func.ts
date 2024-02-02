@@ -17,6 +17,11 @@ function MouseUpHandler(this: DrawingSpaceComponent, ev: MouseEvent): void {
     const figure = this.figures[index];
 
     if (figure.type != 'path') {
+      this.figures.forEach(f => {
+        if (!this.canvas) return;
+        this.animationManager.removeControlShape(f);
+      });
+
       this.canvas.removeElement(figure);
       this.animationManager.removeFigure(figure);
       this.animationManager.craetingShapeIndex = -1;

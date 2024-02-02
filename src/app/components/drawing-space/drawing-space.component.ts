@@ -59,21 +59,6 @@ export class DrawingSpaceComponent implements OnInit {
     canvas.rect(this.canvasWidth, this.canvasHeight)
       .stroke({ color: '#ff00ff', dasharray: '5, 5' })
       .attr({ fill: 'none' });
-    const rect = canvas.rect(100, 100).x(100).y(100)
-      .stroke({ color: '#000', width: 2 })
-      .fill('none');
-
-    const [x, y, width, height] = [
-      Number(rect.x()),
-      Number(rect.y()),
-      Number(rect.width()),
-      Number(rect.height())
-    ]
-    const p = new Point(x, y);
-    const p2 = new Point(x + width, y);
-    const p3 = new Point(x + width, y + height);
-
-    rect.transform({ origin: '50% 50%', rotate: 30 });
   }
 
   zoom(scale: number): void {

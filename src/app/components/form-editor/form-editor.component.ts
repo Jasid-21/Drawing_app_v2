@@ -35,22 +35,33 @@ export class FormEditorComponent implements OnInit {
   ngOnInit(): void {
     this.animationManager.$shapes.subscribe((v) => {
       this.shapes = v.filter(s => s.remember(constants.SELECTED));
-      console.log(this.shapes);
+      if (!this.shapes.length) return;
 
       var maxLimitX: number = 0;
       var maxLimitY: number = 0;
+      var scaleX: number | undefined = this.shapes[0].transform().scaleX || 1;
+      var scaleY: number | undefined = this.shapes[0].transform().scaleY || 1;
+
       this.shapes.forEach(s => {
         const limitX: number = s.remember(constants.MAX_SCALEX);
         const limitY: number = s.remember(constants.MAX_SCALEY);
 
-        console.log(limitX);
-
         if (limitX > maxLimitX) maxLimitX = limitX;
         if (limitY > maxLimitY) maxLimitY = limitY;
+
+        if (scaleX !== undefined) {
+          if (scaleX !== s.transform().scaleX) scaleX = undefined;
+        }
+
+        if (scaleY !== undefined) {
+          if (scaleY !== s.transform().scaleY) scaleY = undefined;
+        }
       });
 
       this.scaleXSlider.handleMaxInputChanges(maxLimitX || 2);
       this.scaleYSlider.handleMaxInputChanges(maxLimitY || 2);
+      this.scaleXSlider.setSelector(scaleX || 0);
+      this.scaleYSlider.setSelector(scaleY || 0);
     });
   }
 

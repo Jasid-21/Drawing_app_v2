@@ -58,6 +58,7 @@ export class LinearSliderComponent implements AfterViewInit {
         s.forget('mousedown-point');
 
         this.value = this.maxValue;
+        this.emitValues();
 
         return;
       }
@@ -67,6 +68,7 @@ export class LinearSliderComponent implements AfterViewInit {
         s.forget('mousedown-point');
 
         this.value = 0;
+        this.emitValues();
 
         return;
       }
@@ -81,26 +83,24 @@ export class LinearSliderComponent implements AfterViewInit {
     c.mouseup(function(ev: MouseEvent) {
       s.forget('mousedown-point');
     });
-    this.selector = s;
 
+    this.selector = s;
     this.setSelector();
   }
 
   setSelector(v?: number): void {
     if (!this.selector) return;
-    const change = this.value != v;
     if (v !== undefined && !isNaN(v) && v >= 0) this.value = v;
 
     //* Calculate the position based in values;
     const ratio = this.maxValue > 0 ? this.value / this.maxValue : 0;
     this.selector.cx(ratio * (this.sliderWidth - 2 * this.radius) + this.radius);
-
-    if (change) this.emitValues()
   }
 
   submit(): void {
     if (this.value > this.maxValue) this.value = this.maxValue;
     this.setSelector();
+    this.emitValues();
   }
 
   handleInputChanges(v: number | null): void {
